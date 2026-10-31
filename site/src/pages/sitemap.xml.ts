@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 // Страницы для поисковиков: пары uz/ru. «Спасибо» и 404 сюда не входят (noindex)
 const pages = [
   { uz: '/', ru: '/ru/' },
-  { uz: '/privacy', ru: '/ru/privacy' },
+  { uz: '/privacy/', ru: '/ru/privacy/' },
 ];
 
 export const GET: APIRoute = ({ site }) => {

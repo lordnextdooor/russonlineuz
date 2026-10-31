@@ -4,7 +4,7 @@ import { formatLeadMessage, isRateLimited, parseLead, sendToTelegram } from '../
 
 export const prerender = false;
 
-const thanksPath = (lang: string) => (lang === 'ru' ? '/ru/spasibo' : '/rahmat');
+const thanksPath = (lang: string) => (lang === 'ru' ? '/ru/spasibo/' : '/rahmat/');
 
 export const POST: APIRoute = async ({ request, clientAddress, redirect }) => {
   // Форма работает и без JS: тогда отвечаем редиректом, с JS — JSON

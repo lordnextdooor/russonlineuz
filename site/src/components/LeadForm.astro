@@ -7,7 +7,7 @@ interface Props {
 }
 
 const { t, lang } = Astro.props;
-const privacyHref = lang === 'uz' ? '/privacy' : '/ru/privacy';
+const privacyHref = lang === 'uz' ? '/privacy/' : '/ru/privacy/';
 ---
 
 <section class="section lead" id="ariza">
@@ -24,7 +24,7 @@ const privacyHref = lang === 'uz' ? '/privacy' : '/ru/privacy';
       action="/api/lead"
       novalidate
       data-lead-form
-      data-thanks={lang === 'ru' ? '/ru/spasibo' : '/rahmat'}
+      data-thanks={lang === 'ru' ? '/ru/spasibo/' : '/rahmat/'}
       data-msg-sending={t.form.sending}
       data-msg-name={t.form.errorName}
       data-msg-phone={t.form.errorPhone}

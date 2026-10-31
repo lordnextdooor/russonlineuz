@@ -10,7 +10,8 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = getDict(lang);
-const alternates = { uz: '/privacy', ru: '/ru/privacy' };
+// Со слэшем в конце: Netlify отдаёт папки по адресу /privacy/, без слэша — редирект 301
+const alternates = { uz: '/privacy/', ru: '/ru/privacy/' };
 // Плейсхолдеры для владельца подсвечиваем, как и на лендинге
 const parts = (text: string) => text.split(/(\[ЗАПОЛНИТЬ[^\]]*\])/).filter(Boolean);
 ---

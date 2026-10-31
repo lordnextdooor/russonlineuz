@@ -15,7 +15,7 @@ const privacyHref = lang === 'uz' ? '/privacy/' : '/ru/privacy/';
 
 <footer class="footer">
   <div class="container footer__inner">
-    <Logo variant="dark" tagline={t.footer.tagline} />
+    <Logo variant="dark" />
 
     <ul class="footer__links">
       <li>
@@ -40,7 +40,8 @@ const privacyHref = lang === 'uz' ? '/privacy/' : '/ru/privacy/';
 
 <style>
   .footer {
-    padding-block: 48px 96px;
+    /* Снизу место под плавающую кнопку Telegram и плашку Netlify */
+    padding-block: 48px 168px;
     background: var(--navy);
     color: var(--cream);
   }

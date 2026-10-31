@@ -137,3 +137,25 @@ await render(
   'og-ru.png',
 );
 await render(await avatar(), 512, 512, 'logo-512.png');
+
+// Надпись логотипа контурами (src/assets/wordmark.svg). Текстом в SVG Safari расставляет
+// буквы по меркам запасного шрифта — «UZ» наезжает на «E». Контуры выглядят одинаково везде.
+// Цвета — CSS-переменные, их задаёт Logo.astro для светлой и тёмной версии.
+{
+  const MARK = { name: '#010101', uz: '#020202', tagline: '#030303' };
+  const tree = h(
+    'div',
+    { display: 'flex', flexDirection: 'column', width: 850, height: 158, fontFamily: FAMILY },
+    h('div', { display: 'flex', fontSize: 100, fontWeight: 800, lineHeight: 0.98, color: MARK.name },
+      'RUSSONLINE', h('span', { color: MARK.uz }, 'UZ')),
+    h('div', { fontSize: 57, fontWeight: 600, letterSpacing: 14, lineHeight: 1, marginTop: 4, paddingLeft: 2, color: MARK.tagline },
+      'RUS TILI ONLINE'),
+  );
+  const svg = (await satori(tree, { width: 850, height: 158, fonts }))
+    .replaceAll(`fill="${MARK.name}"`, 'fill="var(--wm-name)"')
+    .replaceAll(`fill="${MARK.uz}"`, 'fill="var(--wm-uz)"')
+    .replaceAll(`fill="${MARK.tagline}"`, 'fill="var(--wm-tagline)"');
+  const { writeFileSync } = await import('node:fs');
+  writeFileSync(fileURLToPath(new URL('src/assets/wordmark.svg', root)), svg);
+  console.log('✓ src/assets/wordmark.svg');
+}

@@ -1,39 +1,27 @@
 ---
 // Горизонтальный логотип: знак слева, «RUSSONLINEUZ» и подпись справа.
-// Надпись — SVG-картинка (role="img"): это логотип, а не текст, поэтому цвета бренда
-// не проверяются на контраст как обычный текст, а подпись для скринридера одна — «RUSSONLINEUZ».
+// Надпись — контуры Montserrat (src/assets/wordmark.svg, генерирует `npm run og`):
+// текстом в SVG Safari расставлял буквы по запасному шрифту, и «UZ» наезжал на «E».
+// Как картинка (role="img") логотип не проверяется на контраст, подпись для скринридера — «RUSSONLINEUZ».
 import Mark from './Mark.astro';
+import wordmarkSvg from '../assets/wordmark.svg?raw';
 
 interface Props {
   variant?: 'light' | 'dark';
-  tagline?: string;
 }
 
-const { variant = 'light', tagline = 'Rus tili online' } = Astro.props;
+const { variant = 'light' } = Astro.props;
 
-const colors =
-  variant === 'light'
-    ? { name: '#1F2D4D', uz: '#C8553D', tagline: '#A8432F' }
-    : { name: '#FFF6EC', uz: '#E07A5F', tagline: '#F2B5A3' };
+// id масок satori должны быть уникальными: логотип бывает на странице дважды (шапка и подвал)
+const uid = `wm${Math.random().toString(36).slice(2, 8)}`;
+const wordmark = wordmarkSvg
+  .replace(/^<svg width="\d+" height="\d+"/, '<svg class="logo__word" role="img" aria-label="RUSSONLINEUZ"')
+  .replaceAll('satori_', `${uid}_`);
 ---
 
-<span class="logo">
+<span class:list={['logo', `logo--${variant}`]}>
   <Mark variant={variant} class="logo__mark" />
-  {/* Единицы: кегль названия = 100, подписи = 57 (как 14 px / 8 px в исходной вёрстке) */}
-  <svg class="logo__word" viewBox="0 0 850 144" role="img" aria-label="RUSSONLINEUZ">
-    <text x="0" y="72" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="100" fill={colors.name}
-      >RUSSONLINE<tspan fill={colors.uz}>UZ</tspan></text
-    >
-    <text
-      x="2"
-      y="140"
-      font-family="Montserrat, Arial, sans-serif"
-      font-weight="600"
-      font-size="57"
-      letter-spacing="14"
-      fill={colors.tagline}>{tagline.toUpperCase()}</text
-    >
-  </svg>
+  <Fragment set:html={wordmark} />
 </span>
 
 <style>
@@ -44,25 +32,37 @@ const colors =
     min-width: 160px;
   }
 
+  .logo--light {
+    --wm-name: #1f2d4d;
+    --wm-uz: #c8553d;
+    --wm-tagline: #a8432f;
+  }
+
+  .logo--dark {
+    --wm-name: #fff6ec;
+    --wm-uz: #e07a5f;
+    --wm-tagline: #f2b5a3;
+  }
+
   .logo :global(.logo__mark) {
     width: 34px;
     height: auto;
     flex: none;
   }
 
-  /* Высота надписи задаёт кегль: 20 px ≈ название 14 px */
-  .logo__word {
-    height: 20px;
+  /* Высота надписи задаёт кегль: 22 px ≈ название 14 px (холст 850×158, кегль названия 100) */
+  .logo :global(.logo__word) {
+    height: 22px;
     width: auto;
-    overflow: visible;
+    flex: none;
   }
 
   @media (min-width: 400px) {
     .logo :global(.logo__mark) {
       width: 42px;
     }
-    .logo__word {
-      height: 23px;
+    .logo :global(.logo__word) {
+      height: 25px;
     }
   }
 
@@ -70,8 +70,8 @@ const colors =
     .logo :global(.logo__mark) {
       width: 54px;
     }
-    .logo__word {
-      height: 29px;
+    .logo :global(.logo__word) {
+      height: 32px;
     }
   }
 </style>

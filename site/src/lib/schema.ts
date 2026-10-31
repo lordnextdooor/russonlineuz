@@ -13,7 +13,6 @@ export function landingSchema(t: Dict, lang: Locale, siteUrl: URL) {
     '@type': 'Person',
     name: t.teacher.title,
     jobTitle: t.teacher.role,
-    sameAs: [`https://instagram.com/${site.instagramTeacher}`],
   };
 
   const offers = [
@@ -39,7 +38,7 @@ export function landingSchema(t: Dict, lang: Locale, siteUrl: URL) {
       logo: new URL('/logo-512.png', siteUrl).href,
       description: t.meta.description,
       areaServed: { '@type': 'Country', name: 'Uzbekistan' },
-      sameAs: [`https://instagram.com/${site.instagramSchool}`],
+      sameAs: [`https://instagram.com/${site.instagram}`],
       employee: teacher,
     },
     {

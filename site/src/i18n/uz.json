@@ -48,7 +48,7 @@
     "grammarTitle": "50% — grammatika",
     "grammarText": "Qoidalarni oddiy tilda, misollar bilan tushuntiramiz — murakkab atamalarsiz.",
     "points": [
-      { "icon": "video", "text": "Zoom orqali jonli dars — 1 soat" },
+      { "icon": "video", "text": "Zoom orqali jonli dars" },
       { "icon": "check", "text": "Har bir darsga lugʻat va test" },
       { "icon": "wifi", "text": "Barqaror internet (Wi-Fi) kerak — dars uzilmasligi uchun" }
     ]
@@ -160,7 +160,7 @@
     "title": "Maxfiylik siyosati",
     "updated": "Oxirgi yangilanish: 2026-yil 1-noyabr",
     "sections": [
-      { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Sayt egasi: [ЗАПОЛНИТЬ: ФИО / ИП, ИНН]. Biz bilan bogʻlanish: Instagram yoki Telegram — @nyusupovas." },
+      { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Sayt egasi: [ЗАПОЛНИТЬ: ФИО / ИП, ИНН]. Biz bilan bogʻlanish: Instagram — @russonlineuz, Telegram — @nyusupovas." },
       { "h": "Qanday maʼlumotlarni yigʻamiz", "p": "Ariza formasi orqali: ismingiz, telefon raqamingiz, Telegram username (agar yozsangiz), tanlagan format, tarif va qulay vaqt." },
       { "h": "Nima uchun", "p": "Faqat siz bilan bogʻlanish, bepul darsni kelishib olish va darslarni tashkil qilish uchun. Maʼlumotlaringizni sotmaymiz va boshqalarga bermaymiz." },
       { "h": "Maʼlumotlar qayerga boradi", "p": "Ariza ustozning Telegram chatiga yuboriladi. Sayt serverida arizalar saqlanmaydi. Sayt Vercel xostingida ishlaydi." },

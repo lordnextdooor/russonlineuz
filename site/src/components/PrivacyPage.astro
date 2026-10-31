@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getDict, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang);
+const alternates = { uz: '/privacy', ru: '/ru/privacy' };
+// Плейсхолдеры для владельца подсвечиваем, как и на лендинге
+const parts = (text: string) => text.split(/(\[ЗАПОЛНИТЬ[^\]]*\])/).filter(Boolean);
+---
+
+<Base lang={lang} title={t.privacy.metaTitle} description={t.privacy.metaDescription} alternates={alternates}>
+  <Header t={t} lang={lang} alternates={alternates} />
+  <main class="section privacy">
+    <article class="container privacy__inner">
+      <h1>{t.privacy.title}</h1>
+      <p class="privacy__updated">{t.privacy.updated}</p>
+      {
+        t.privacy.sections.map((s) => (
+          <section>
+            <h2>{s.h}</h2>
+            <p>{parts(s.p).map((part) => (part.startsWith('[ЗАПОЛНИТЬ') ? <span class="todo">{part}</span> : part))}</p>
+          </section>
+        ))
+      }
+    </article>
+  </main>
+  <Footer t={t} lang={lang} />
+</Base>
+
+<style>
+  .privacy__inner {
+    max-width: calc(760px + var(--gutter) * 2);
+  }
+
+  /* «Конфиденциальности» должно влезать в 360 px целиком; перенос — только на совсем узких */
+  .privacy h1 {
+    font-size: clamp(24px, 7vw, 44px);
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  .privacy__updated {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .privacy section {
+    margin-top: 32px;
+  }
+
+  .privacy h2 {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .privacy section p {
+    margin-top: 8px;
+    color: var(--text-muted);
+  }
+</style>

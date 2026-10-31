@@ -1,0 +1,140 @@
+---
+import Icon from './Icon.astro';
+import Mark from './Mark.astro';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section section--navy lessons" id="kurslar">
+  <Mark variant="dark" class="lessons__watermark" />
+  <div class="container reveal">
+    <div class="section-head">
+      <span class="eyebrow">{t.lessons.eyebrow}</span>
+      <h2>{t.lessons.title}</h2>
+    </div>
+
+    <div class="lessons__halves">
+      <div class="lessons__half lessons__half--speak">
+        <span class="lessons__big">Aa</span>
+        <h3>{t.lessons.speakingTitle}</h3>
+        <p>{t.lessons.speakingText}</p>
+      </div>
+      <div class="lessons__half lessons__half--grammar">
+        <span class="lessons__big">Яя</span>
+        <h3>{t.lessons.grammarTitle}</h3>
+        <p>{t.lessons.grammarText}</p>
+      </div>
+    </div>
+
+    <ul class="lessons__points">
+      {
+        t.lessons.points.map((p) => (
+          <li>
+            <Icon name={p.icon} size={24} />
+            <span>{p.text}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .lessons {
+    overflow: hidden;
+  }
+
+  .lessons :global(.lessons__watermark) {
+    position: absolute;
+    left: -100px;
+    bottom: -60px;
+    width: 460px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .lessons__halves {
+    display: grid;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .lessons__half {
+    position: relative;
+    padding: 28px 24px;
+  }
+
+  .lessons__half--speak {
+    background: var(--cream);
+    color: var(--navy);
+  }
+
+  .lessons__half--grammar {
+    background: var(--terra);
+    color: var(--white);
+  }
+
+  .lessons__half h3 {
+    font-size: 22px;
+  }
+
+  .lessons__half p {
+    margin-top: 8px;
+    max-width: 420px;
+  }
+
+  .lessons__half--speak p {
+    color: rgba(31, 45, 77, 0.8);
+  }
+
+  .lessons__big {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 1;
+    opacity: 0.22;
+  }
+
+  .lessons__points {
+    display: grid;
+    gap: 12px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lessons__points li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .lessons__points :global(svg) {
+    flex: none;
+    color: var(--terra-light);
+  }
+
+  @media (min-width: 768px) {
+    .lessons__halves {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .lessons__half {
+      padding: 40px;
+    }
+
+    .lessons__points {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

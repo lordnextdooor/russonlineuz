@@ -1,0 +1,50 @@
+---
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+---
+
+<a
+  class="fab"
+  href={`https://t.me/${site.telegram}`}
+  target="_blank"
+  rel="noopener"
+  aria-label={t.fab}
+  data-event="click_telegram"
+>
+  <Icon name="telegram" size={28} />
+</a>
+
+<style>
+  /* Плавающая кнопка Telegram — только на телефоне */
+  .fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--cream);
+    box-shadow: 0 10px 24px -8px rgba(31, 45, 77, 0.6);
+  }
+
+  .fab:hover {
+    background: var(--terra-dark);
+  }
+
+  @media (min-width: 768px) {
+    .fab {
+      display: none;
+    }
+  }
+</style>

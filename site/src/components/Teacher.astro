@@ -1,0 +1,101 @@
+---
+import Icon from './Icon.astro';
+import Mark from './Mark.astro';
+import site from '../data/site.json';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section teacher reveal" id="ustoz">
+  <div class="container teacher__grid">
+    {/* TODO: фото Назокат (портрет) — заменить плейсхолдер */}
+    <div class="teacher__photo" role="img" aria-label={t.hero.photoAlt}>
+      <Mark class="teacher__photo-mark" />
+      <span class="todo">{t.hero.photoPlaceholder}</span>
+    </div>
+
+    <div class="teacher__text">
+      <span class="eyebrow">{t.teacher.eyebrow}</span>
+      <h2>{t.teacher.title}</h2>
+      <p class="teacher__role">{t.teacher.role}</p>
+      <p class="teacher__intro">{t.teacher.intro}</p>
+      <p><span class="todo">{t.teacher.story}</span></p>
+      <ul class="teacher__facts">
+        {t.teacher.facts.map((f) => <li><span class="todo">{f}</span></li>)}
+      </ul>
+      <a
+        class="btn btn--ghost"
+        href={`https://instagram.com/${site.instagramTeacher}`}
+        target="_blank"
+        rel="noopener"
+        data-event="click_instagram"
+      >
+        <Icon name="instagram" size={22} />
+        {t.teacher.instagram} @{site.instagramTeacher}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .teacher__grid {
+    display: grid;
+    gap: 32px;
+  }
+
+  .teacher__photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    aspect-ratio: 1 / 1;
+    max-width: 440px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 70% 25%, #ffffff 0%, rgba(242, 181, 163, 0.55) 100%);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    text-align: center;
+  }
+
+  .teacher__photo :global(.teacher__photo-mark) {
+    width: 38%;
+  }
+
+  .teacher__role {
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terra-dark);
+  }
+
+  .teacher__intro {
+    margin-block: 20px 12px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .teacher__facts {
+    display: grid;
+    gap: 8px;
+    margin: 20px 0 28px;
+    padding-left: 20px;
+  }
+
+  @media (min-width: 900px) {
+    .teacher__grid {
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 64px;
+    }
+  }
+</style>

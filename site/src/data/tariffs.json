@@ -1,0 +1,46 @@
+{
+  "individual": [
+    {
+      "id": "ind-2",
+      "perWeek": 2,
+      "days": ["tue", "thu"],
+      "times": [],
+      "lessonsPerMonth": 8,
+      "priceMonth": 900000,
+      "durationMonths": "4–5",
+      "featured": false
+    },
+    {
+      "id": "ind-3",
+      "perWeek": 3,
+      "days": ["mon", "wed", "fri"],
+      "times": [],
+      "lessonsPerMonth": 12,
+      "priceMonth": 1350000,
+      "durationMonths": "3",
+      "featured": true
+    }
+  ],
+  "group": [
+    {
+      "id": "grp-1",
+      "perWeek": 3,
+      "days": ["mon", "wed", "fri"],
+      "times": ["12:00", "19:30"],
+      "lessonsPerMonth": 12,
+      "priceMonth": 500000,
+      "durationMonths": "3–4",
+      "featured": true
+    },
+    {
+      "id": "grp-2",
+      "perWeek": 2,
+      "days": ["tue", "thu"],
+      "times": ["12:00", "20:30"],
+      "lessonsPerMonth": 8,
+      "priceMonth": 350000,
+      "durationMonths": "5–6",
+      "featured": false
+    }
+  ]
+}

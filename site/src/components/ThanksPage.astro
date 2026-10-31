@@ -1,0 +1,106 @@
+---
+// Страница «Спасибо за заявку» — сюда ведёт форма; по ней считаем конверсии
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import Mark from './Mark.astro';
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+import { getDict, homePath, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang);
+---
+
+<Base
+  lang={lang}
+  title={t.thanks.metaTitle}
+  description={t.thanks.text}
+  alternates={{ uz: '/rahmat', ru: '/ru/spasibo' }}
+  noindex
+>
+  <Header t={t} lang={lang} alternates={{ uz: '/rahmat', ru: '/ru/spasibo' }} />
+  <main class="thanks">
+    <div class="container">
+      <div class="thanks__card">
+        <Mark class="thanks__mark" />
+        <h1>{t.thanks.title}</h1>
+        <p>{t.thanks.text}</p>
+        <div class="thanks__actions">
+          <a
+            class="btn btn--primary"
+            href={`https://instagram.com/${site.instagramSchool}`}
+            target="_blank"
+            rel="noopener"
+            data-event="click_instagram"
+          >
+            <Icon name="instagram" size={22} />
+            {t.thanks.instagram}
+          </a>
+          <a class="btn btn--ghost" href={homePath(lang)}>{t.thanks.back}</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer t={t} lang={lang} />
+  {/* Конверсия: заявка отправлена */}
+  <script is:inline>
+    window.track && window.track('lead');
+  </script>
+</Base>
+
+<style>
+  .thanks {
+    display: grid;
+    align-items: center;
+    min-height: calc(100vh - var(--header-h) - 200px);
+    padding-block: 48px 80px;
+  }
+
+  .thanks__card {
+    max-width: 640px;
+    margin-inline: auto;
+    padding: 40px 24px;
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .thanks__card :global(.thanks__mark) {
+    width: 120px;
+    margin: 0 auto 24px;
+  }
+
+  .thanks h1 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .thanks p {
+    margin-top: 14px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  .thanks__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 32px;
+  }
+
+  @media (min-width: 560px) {
+    .thanks__card {
+      padding: 56px 48px;
+    }
+
+    .thanks__actions {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+</style>

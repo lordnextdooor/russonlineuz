@@ -1,0 +1,184 @@
+{
+  "meta": {
+    "title": "Rus tili online kurslari noldan — RUSSONLINEUZ | 1-dars bepul",
+    "description": "Rus tilini noldan oʻrganing: Zoom orqali jonli darslar, 50% suhbat amaliyoti. Individual va mini-guruh. Birinchi dars bepul."
+  },
+  "schema": {
+    "courseName": "Rus tili noldan — onlayn kurs",
+    "ogAlt": "RUSSONLINEUZ — rus tili online, 1-dars bepul"
+  },
+  "nav": {
+    "courses": "Kurslar",
+    "prices": "Narxlar",
+    "teacher": "Ustoz",
+    "faq": "Savollar",
+    "cta": "Bepul darsga yozilish",
+    "ctaShort": "Yozilish",
+    "menu": "Menyu",
+    "close": "Yopish",
+    "langLabel": "Tilni tanlang"
+  },
+  "hero": {
+    "titleBefore": "Rus tilida ",
+    "titleAccent": "erkin",
+    "titleAfter": " gapiring — noldan boshlab",
+    "subtitle": "Nazokat Yusupova bilan Zoom orqali jonli darslar. 50% suhbat, 50% grammatika.",
+    "ctaPrimary": "1-dars bepul — yozilish",
+    "ctaSecondary": "Narxlarni koʻrish",
+    "trust": ["Jonli darslar Zoom orqali", "Har bir darsga lugʻat va test", "1-dars bepul"],
+    "photoAlt": "Ustoz Nazokat Yusupova",
+    "photoPlaceholder": "[ЗАПОЛНИТЬ: фото Назокат]"
+  },
+  "audience": {
+    "eyebrow": "Kimlar uchun",
+    "title": "Bu kurs sizga mos, agar…",
+    "cards": [
+      { "icon": "briefcase", "title": "Ish uchun rus tili kerak", "text": "Hamkasblar va mijozlar bilan bemalol gaplashing." },
+      { "icon": "globe", "title": "Koʻchib ketmoqchisiz", "text": "Yangi joyda hujjatlar, doʻkon va shifokor bilan muloqot qiling." },
+      { "icon": "book", "title": "Oʻqish uchun kerak", "text": "Darslar va imtihonlar uchun mustahkam asos yarating." },
+      { "icon": "chat", "title": "Gapirishdan uyalasiz", "text": "Bu yerda xato qilish — oldinga qoʻyilgan qadam." }
+    ],
+    "motto": "Gapirishdan qoʻrqmang — birinchi darsdanoq gapirasiz."
+  },
+  "lessons": {
+    "eyebrow": "Darslar",
+    "title": "Darslar qanday oʻtadi",
+    "speakingTitle": "50% — suhbat amaliyoti",
+    "speakingText": "Birinchi darsdanoq rus tilida gapirasiz: savol-javob, dialoglar, hayotiy vaziyatlar.",
+    "grammarTitle": "50% — grammatika",
+    "grammarText": "Qoidalarni oddiy tilda, misollar bilan tushuntiramiz — murakkab atamalarsiz.",
+    "points": [
+      { "icon": "video", "text": "Zoom orqali jonli dars — 1 soat" },
+      { "icon": "check", "text": "Har bir darsga lugʻat va test" },
+      { "icon": "wifi", "text": "Barqaror internet (Wi-Fi) kerak — dars uzilmasligi uchun" }
+    ]
+  },
+  "path": {
+    "eyebrow": "Aa → Яя",
+    "title": "Noldan erkin suhbatgacha",
+    "steps": [
+      { "title": "Bepul dars", "text": "Tanishamiz va darajangizni bilib olamiz." },
+      { "title": "Birinchi iboralar", "text": "Salomlashish, oʻzingiz haqingizda gapirish." },
+      { "title": "Kundalik suhbatlar", "text": "Doʻkon, ish, transport, telefon orqali gaplashish." },
+      { "title": "Erkin oddiy suhbat", "text": "3–4 oyda oddiy suhbatni erkin olib borasiz.*" }
+    ],
+    "note": "* Haftasiga 3 marta dars qilganda. Natija muntazam qatnashishga bogʻliq."
+  },
+  "teacher": {
+    "eyebrow": "Ustoz",
+    "title": "Nazokat Yusupova",
+    "role": "Rus tili oʻqituvchisi",
+    "intro": "Salom! Men Nazokat. Barcha darslarni oʻzim olib boraman — siz bilan birinchi darsdan oxirgisigacha birga boʻlaman.",
+    "story": "[ЗАПОЛНИТЬ: 2–3 предложения от первого лица — почему преподаёт, как проходят уроки]",
+    "facts": [
+      "[ЗАПОЛНИТЬ: опыт преподавания]",
+      "[ЗАПОЛНИТЬ: образование]",
+      "[ЗАПОЛНИТЬ: сколько учеников обучено]"
+    ],
+    "instagram": "Instagram"
+  },
+  "pricing": {
+    "eyebrow": "Narxlar",
+    "title": "Kurslar va narxlar",
+    "tabIndividual": "Individual",
+    "tabGroup": "Mini-guruh (5–6 kishi)",
+    "individualName": "Individual · haftasiga {n} marta",
+    "groupName": "Mini-guruh · haftasiga {n} marta",
+    "lessons": "{n} dars / oy, har biri 1 soat",
+    "duration": "Kurs davomiyligi: {n} oy",
+    "timeOr": "yoki",
+    "perMonth": "soʻm / oy",
+    "perLesson": "≈ {n} soʻm / dars",
+    "badge": "Tez natija",
+    "free": "1-dars bepul",
+    "choose": "Tanlash"
+  },
+  "days": {
+    "mon": "Dushanba",
+    "tue": "Seshanba",
+    "wed": "Chorshanba",
+    "thu": "Payshanba",
+    "fri": "Juma"
+  },
+  "steps": {
+    "eyebrow": "Yozilish",
+    "title": "3 qadamda boshlang",
+    "items": [
+      { "title": "Ariza qoldiring", "text": "30 soniya: ism va telefon raqami." },
+      { "title": "Ustoz Telegram orqali bogʻlanadi", "text": "Siz uchun qulay vaqtni kelishib olamiz." },
+      { "title": "Zoomda bepul dars", "text": "Tanishamiz va birinchi suhbatni boshlaymiz." }
+    ]
+  },
+  "faq": {
+    "eyebrow": "Savollar",
+    "title": "Koʻp beriladigan savollar",
+    "items": [
+      { "q": "Rus tilini umuman bilmayman — boshlay olamanmi?", "a": "Ha. Kurs aynan noldan boshlovchilar uchun. Alifbodan va eng kerakli iboralardan boshlaymiz." },
+      { "q": "Darslar qanday oʻtadi?", "a": "Zoom orqali jonli dars, 1 soat. Yarmi — suhbat amaliyoti, yarmi — grammatika. Har bir darsdan keyin lugʻat va test." },
+      { "q": "Nima kerak boʻladi?", "a": "Telefon yoki kompyuter va barqaror Wi-Fi internet. Quloqchin boʻlsa, yanada qulay." },
+      { "q": "Bepul dars qanday oʻtadi?", "a": "Tanishamiz, darajangizni aniqlaymiz va birga qisqa suhbat amaliyoti qilamiz. Hech qanday majburiyat yoʻq." },
+      { "q": "Individual yoki guruh — qaysi biri menga mos?", "a": "Individual darsda butun vaqt faqat sizga bagʻishlanadi. Mini-guruhda 5–6 kishi bilan birga gapirasiz, narxi esa ancha arzon. Tanlay olmasangiz — bepul darsda birga hal qilamiz." },
+      { "q": "Qancha vaqtda gapira boshlayman?", "a": "Oddiy iboralarni birinchi darsdanoq gapirasiz. Haftasiga 3 marta shugʻullansangiz, 3–4 oyda oddiy suhbatni erkin olib borasiz. Natija muntazam qatnashish va uy vazifasiga bogʻliq." },
+      { "q": "Toʻlov qanday qilinadi?", "a": "[ЗАПОЛНИТЬ: Click / Payme / перевод на карту]" },
+      { "q": "Darsni oʻtkazib yuborsam nima boʻladi?", "a": "[ЗАПОЛНИТЬ: правило переноса]" }
+    ]
+  },
+  "form": {
+    "title": "Birinchi qadamni bugun qiling — 1-dars bepul",
+    "subtitle": "Ariza qoldiring — ustoz Telegram orqali siz bilan bogʻlanadi.",
+    "name": "Ismingiz",
+    "phone": "Telefon raqamingiz",
+    "telegram": "Telegram username",
+    "optional": "ixtiyoriy",
+    "format": "Format",
+    "formatIndividual": "Individual",
+    "formatGroup": "Mini-guruh",
+    "formatUnknown": "Hali bilmayman",
+    "time": "Qulay vaqt",
+    "timeDay": "Kunduzi (12:00)",
+    "timeEvening": "Kechqurun",
+    "tariffChosen": "Tanlangan tarif:",
+    "submit": "Bepul darsga yozilish",
+    "consentBefore": "Tugmani bosib, shaxsiy maʼlumotlarimni qayta ishlashga rozilik beraman. ",
+    "consentLink": "Maxfiylik siyosati",
+    "sending": "Yuborilmoqda…",
+    "errorName": "Ismingizni yozing.",
+    "errorPhone": "Telefon raqamini toʻliq kiriting: +998 __ ___ __ __",
+    "errorSend": "Xatolik yuz berdi. Qayta urinib koʻring yoki Telegram orqali yozing.",
+    "errorRate": "Arizangiz allaqachon yuborilgan. Ustoz tez orada bogʻlanadi."
+  },
+  "thanks": {
+    "metaTitle": "Rahmat! — RUSSONLINEUZ",
+    "title": "Rahmat! Arizangiz qabul qilindi",
+    "text": "Ustoz tez orada Telegram orqali bogʻlanadi.",
+    "instagram": "Instagramga obuna boʻling",
+    "back": "Bosh sahifaga qaytish"
+  },
+  "privacy": {
+    "metaTitle": "Maxfiylik siyosati — RUSSONLINEUZ",
+    "metaDescription": "RUSSONLINEUZ saytida shaxsiy maʼlumotlar qanday qayta ishlanadi.",
+    "title": "Maxfiylik siyosati",
+    "updated": "Oxirgi yangilanish: 2026-yil 1-noyabr",
+    "sections": [
+      { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Sayt egasi: [ЗАПОЛНИТЬ: ФИО / ИП, ИНН]. Biz bilan bogʻlanish: Instagram yoki Telegram — @nyusupovas." },
+      { "h": "Qanday maʼlumotlarni yigʻamiz", "p": "Ariza formasi orqali: ismingiz, telefon raqamingiz, Telegram username (agar yozsangiz), tanlagan format, tarif va qulay vaqt." },
+      { "h": "Nima uchun", "p": "Faqat siz bilan bogʻlanish, bepul darsni kelishib olish va darslarni tashkil qilish uchun. Maʼlumotlaringizni sotmaymiz va boshqalarga bermaymiz." },
+      { "h": "Maʼlumotlar qayerga boradi", "p": "Ariza ustozning Telegram chatiga yuboriladi. Sayt serverida arizalar saqlanmaydi. Sayt Vercel xostingida ishlaydi." },
+      { "h": "Statistika va cookie", "p": "Saytni yaxshilash uchun Yandex Metrika, Google Analytics va Meta Pixel ishlatilishi mumkin. Ular cookie fayllaridan foydalanadi va saytdan qanday foydalanilishi haqida statistikani yigʻadi. Cookie fayllarini brauzer sozlamalarida oʻchirib qoʻyishingiz mumkin." },
+      { "h": "Huquqlaringiz", "p": "Istalgan vaqtda maʼlumotlaringizni koʻrish, tuzatish yoki oʻchirishni soʻrashingiz mumkin — @nyusupovas ga yozing. Saqlash muddati: [ЗАПОЛНИТЬ]." }
+    ]
+  },
+  "notFound": {
+    "metaTitle": "Sahifa topilmadi — RUSSONLINEUZ",
+    "title": "Sahifa topilmadi",
+    "text": "Bunday sahifa yoʻq yoki u koʻchirilgan.",
+    "button": "Bosh sahifaga"
+  },
+  "footer": {
+    "tagline": "Rus tili online",
+    "phone": "Telefon: [ЗАПОЛНИТЬ]",
+    "privacy": "Maxfiylik siyosati",
+    "copyright": "© 2026 RUSSONLINEUZ"
+  },
+  "fab": "Telegramda yozish"
+}

@@ -1,0 +1,201 @@
+---
+import Mark from './Mark.astro';
+import Icon from './Icon.astro';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const trustIcons = ['video', 'book', 'check'];
+---
+
+<section class="hero">
+  <Mark class="hero__watermark" />
+  <div class="container hero__grid">
+    <div class="hero__text">
+      <h1>
+        {t.hero.titleBefore}<span class="accent">{t.hero.titleAccent}</span>{t.hero.titleAfter}
+      </h1>
+      <p class="hero__subtitle">{t.hero.subtitle}</p>
+      <div class="hero__actions">
+        <a href="#ariza" class="btn btn--primary">{t.hero.ctaPrimary}</a>
+        <a href="#narxlar" class="btn btn--ghost">{t.hero.ctaSecondary}</a>
+      </div>
+      <ul class="hero__trust">
+        {
+          t.hero.trust.map((item, i) => (
+            <li>
+              <Icon name={trustIcons[i]} size={20} />
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="hero__visual">
+      {/* TODO: заменить плейсхолдер на фото Назокат (WebP/AVIF через astro:assets) */}
+      <div class="hero__photo" role="img" aria-label={t.hero.photoAlt}>
+        <Mark class="hero__photo-mark" />
+        <span class="todo">{t.hero.photoPlaceholder}</span>
+      </div>
+      <div class="hero__sign" aria-hidden="true">
+        <span>Aa</span>
+        <Icon name="arrow" size={22} />
+        <span class="accent">Яя</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: 32px 64px;
+  }
+
+  .hero :global(.hero__watermark) {
+    position: absolute;
+    right: -80px;
+    top: -40px;
+    width: 420px;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+
+  .hero__grid {
+    position: relative;
+    display: grid;
+    gap: 40px;
+  }
+
+  .hero__subtitle {
+    margin-top: 20px;
+    max-width: 560px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .hero__trust {
+    display: grid;
+    gap: 10px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hero__trust li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .hero__trust :global(svg) {
+    flex: none;
+    color: var(--terra);
+  }
+
+  /* На планшете фото не растягиваем на всю ширину — иначе блок слишком высокий */
+  .hero__visual {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .hero__photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    aspect-ratio: 4 / 5;
+    max-height: 520px;
+    width: 100%;
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 30% 20%, #ffffff 0%, rgba(242, 181, 163, 0.55) 100%);
+    box-shadow: var(--shadow);
+    text-align: center;
+    padding: 24px;
+  }
+
+  .hero__photo :global(.hero__photo-mark) {
+    width: 45%;
+    opacity: 0.9;
+  }
+
+  .hero__sign {
+    position: absolute;
+    left: 16px;
+    bottom: -20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    background: var(--navy);
+    color: var(--cream);
+    font-weight: 800;
+    font-size: 22px;
+    box-shadow: var(--shadow);
+  }
+
+  .hero__sign .accent {
+    color: var(--terra-light);
+  }
+
+  @media (min-width: 560px) {
+    .hero__actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .hero__trust {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }
+
+  @media (min-width: 960px) {
+    .hero {
+      padding-block: 56px 104px;
+    }
+
+    .hero__grid {
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero__trust {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
+    .hero :global(.hero__watermark) {
+      width: 620px;
+      right: -120px;
+      top: -60px;
+    }
+
+    .hero__sign {
+      left: -24px;
+      bottom: 40px;
+    }
+  }
+</style>

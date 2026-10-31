@@ -1,0 +1,83 @@
+---
+import Icon from './Icon.astro';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const isTodo = (s: string) => s.startsWith('[ЗАПОЛНИТЬ');
+---
+
+<section class="section faq reveal" id="savollar">
+  <div class="container faq__inner">
+    <div class="section-head">
+      <span class="eyebrow">{t.faq.eyebrow}</span>
+      <h2>{t.faq.title}</h2>
+    </div>
+
+    <div class="faq__list">
+      {
+        t.faq.items.map((item) => (
+          <details class="faq__item">
+            <summary>
+              <span>{item.q}</span>
+              <Icon name="chevron" size={22} class="faq__chevron" />
+            </summary>
+            <p>{isTodo(item.a) ? <span class="todo">{item.a}</span> : item.a}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__inner {
+    max-width: calc(820px + var(--gutter) * 2);
+  }
+
+  .faq__list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .faq__item {
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.4;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item :global(.faq__chevron) {
+    flex: none;
+    color: var(--terra);
+    transition: transform 0.2s ease;
+  }
+
+  .faq__item[open] :global(.faq__chevron) {
+    transform: rotate(180deg);
+  }
+
+  .faq__item p {
+    padding: 0 20px 20px;
+    color: var(--text-muted);
+  }
+</style>

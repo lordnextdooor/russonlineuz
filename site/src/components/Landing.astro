@@ -1,0 +1,44 @@
+---
+// Лендинг целиком; страницы / и /ru/ отличаются только языком
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Hero from './Hero.astro';
+import Audience from './Audience.astro';
+import Lessons from './Lessons.astro';
+import Path from './Path.astro';
+import Teacher from './Teacher.astro';
+import Pricing from './Pricing.astro';
+import Steps from './Steps.astro';
+import Faq from './Faq.astro';
+import LeadForm from './LeadForm.astro';
+import Footer from './Footer.astro';
+import TelegramFab from './TelegramFab.astro';
+import { getDict, type Locale } from '../i18n';
+import { landingSchema } from '../lib/schema';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = getDict(lang);
+const jsonLd = landingSchema(t, lang, Astro.site!);
+---
+
+<Base lang={lang} title={t.meta.title} description={t.meta.description} jsonLd={jsonLd}>
+  <Header t={t} lang={lang} />
+  <main>
+    <Hero t={t} />
+    <Audience t={t} />
+    <Lessons t={t} />
+    <Path t={t} />
+    <Teacher t={t} />
+    <Pricing t={t} />
+    <Steps t={t} />
+    {/* Блок отзывов скрыт, пока нет настоящих отзывов учеников (ТЗ, п. 8) */}
+    <Faq t={t} />
+    <LeadForm t={t} lang={lang} />
+  </main>
+  <Footer t={t} lang={lang} />
+  <TelegramFab t={t} />
+</Base>

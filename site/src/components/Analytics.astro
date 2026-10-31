@@ -1,0 +1,75 @@
+---
+// Счётчики: Яндекс Метрика, GA4, Meta Pixel. Подключаются, только если задан ID,
+// и грузятся после загрузки страницы — чтобы не тормозить первый экран.
+// События: track('lead'), клики по [data-event], выбор тарифа.
+import { PUBLIC_YM_ID, PUBLIC_GA4_ID, PUBLIC_META_PIXEL_ID } from 'astro:env/client';
+
+const ids = { ym: PUBLIC_YM_ID ?? '', ga: PUBLIC_GA4_ID ?? '', px: PUBLIC_META_PIXEL_ID ?? '' };
+const debug = import.meta.env.DEV;
+---
+
+<script is:inline define:vars={{ ids, debug }}>
+  var w = window;
+  var scripts = [];
+
+  if (ids.ym) {
+    w.ym = w.ym || function () { (w.ym.a = w.ym.a || []).push(arguments); };
+    w.ym.l = Date.now();
+    w.ym(Number(ids.ym), 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+    scripts.push('https://mc.yandex.ru/metrika/tag.js');
+  }
+
+  if (ids.ga) {
+    w.dataLayer = w.dataLayer || [];
+    w.gtag = function () { w.dataLayer.push(arguments); };
+    w.gtag('js', new Date());
+    w.gtag('config', ids.ga);
+    scripts.push('https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ids.ga));
+  }
+
+  if (ids.px) {
+    var n = (w.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); });
+    if (!w._fbq) w._fbq = n;
+    n.push = n;
+    n.loaded = true;
+    n.version = '2.0';
+    n.queue = [];
+    w.fbq('init', ids.px);
+    w.fbq('track', 'PageView');
+    scripts.push('https://connect.facebook.net/en_US/fbevents.js');
+  }
+
+  w.track = function (event, params) {
+    params = params || {};
+    if (debug) console.debug('[track]', event, params);
+    if (w.ym && ids.ym) w.ym(Number(ids.ym), 'reachGoal', event, params);
+    if (w.gtag) w.gtag('event', event, params);
+    if (w.fbq) event === 'lead' ? w.fbq('track', 'Lead') : w.fbq('trackCustom', event, params);
+  };
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('[data-event], [data-choose-tariff]');
+    if (!el) return;
+    if (el.dataset.chooseTariff) w.track('choose_tariff', { tariff: el.dataset.chooseTariff });
+    else w.track(el.dataset.event, el.dataset.eventLabel ? { label: el.dataset.eventLabel } : {});
+  });
+
+  if (scripts.length) {
+    var loaded = false;
+    var load = function () {
+      if (loaded) return;
+      loaded = true;
+      scripts.forEach(function (src) {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = src;
+        document.head.appendChild(s);
+      });
+    };
+    // Первое действие пользователя или через 2 секунды после загрузки — что раньше
+    ['pointerdown', 'scroll', 'keydown'].forEach(function (type) {
+      w.addEventListener(type, load, { once: true, passive: true });
+    });
+    w.addEventListener('load', function () { setTimeout(load, 2000); });
+  }
+</script>

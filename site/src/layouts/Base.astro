@@ -1,0 +1,90 @@
+---
+import '@fontsource/montserrat/latin-500.css';
+import '@fontsource/montserrat/latin-600.css';
+import '@fontsource/montserrat/latin-700.css';
+import '@fontsource/montserrat/latin-800.css';
+import '@fontsource/montserrat/latin-900.css';
+import '@fontsource/montserrat/cyrillic-500.css';
+import '@fontsource/montserrat/cyrillic-600.css';
+import '@fontsource/montserrat/cyrillic-700.css';
+import '@fontsource/montserrat/cyrillic-800.css';
+import '@fontsource/montserrat/cyrillic-900.css';
+import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import { getDict, type Locale } from '../i18n';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description: string;
+  /** Адреса этой же страницы на других языках (для hreflang) */
+  alternates?: Record<Locale, string>;
+  /** Служебные страницы (например, «Спасибо») не индексируем */
+  noindex?: boolean;
+  /** Разметка Schema.org (JSON-LD) */
+  jsonLd?: unknown;
+}
+
+const { lang, title, description, alternates = { uz: '/', ru: '/ru/' }, noindex = false, jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(`/og-${lang}.png`, Astro.site);
+// «</» внутри JSON закрыло бы тег script — экранируем
+const jsonLdHtml = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="uz" href={new URL(alternates.uz, Astro.site)} />
+    <link rel="alternate" hreflang="ru" href={new URL(alternates.ru, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL(alternates.uz, Astro.site)} />
+    <meta property="og:locale" content={lang === 'uz' ? 'uz_UZ' : 'ru_RU'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#FFF6EC" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="RUSSONLINEUZ" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={getDict(lang).schema.ogAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="apple-touch-icon" href="/logo-512.png" />
+    {jsonLdHtml && <script type="application/ld+json" set:html={jsonLdHtml} />}
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <Analytics />
+  </head>
+  <body>
+    <slot />
+    <script>
+      // Лёгкое появление секций при прокрутке
+      const items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px' },
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

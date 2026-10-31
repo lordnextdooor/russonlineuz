@@ -1,0 +1,76 @@
+---
+// Одна страница 404 на оба языка: узбекский основной, русский ниже
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Mark from '../components/Mark.astro';
+import { getDict } from '../i18n';
+
+const uz = getDict('uz');
+const ru = getDict('ru');
+---
+
+<Base lang="uz" title={uz.notFound.metaTitle} description={uz.notFound.text} noindex>
+  <Header t={uz} lang="uz" />
+  <main class="nf">
+    <div class="container nf__inner">
+      <div class="nf__code" aria-hidden="true">4<Mark class="nf__mark" />4</div>
+      <h1>{uz.notFound.title}</h1>
+      <p>{uz.notFound.text}</p>
+      <p class="nf__ru" lang="ru">{ru.notFound.title}. {ru.notFound.text}</p>
+      <div class="nf__actions">
+        <a class="btn btn--primary" href="/">{uz.notFound.button}</a>
+        <a class="btn btn--ghost" href="/ru/" lang="ru">{ru.notFound.button}</a>
+      </div>
+    </div>
+  </main>
+  <Footer t={uz} lang="uz" />
+</Base>
+
+<style>
+  .nf {
+    display: grid;
+    align-items: center;
+    min-height: calc(100vh - var(--header-h) - 200px);
+    padding-block: 48px 80px;
+    text-align: center;
+  }
+
+  .nf__code {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    font-weight: 900;
+    font-size: clamp(88px, 22vw, 160px);
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  .nf__code :global(.nf__mark) {
+    width: 0.9em;
+  }
+
+  .nf h1 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+
+  .nf p {
+    margin-top: 10px;
+    font-size: 18px;
+    color: var(--text-muted);
+  }
+
+  .nf .nf__ru {
+    font-size: 15px;
+  }
+
+  .nf__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 32px;
+  }
+</style>

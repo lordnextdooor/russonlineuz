@@ -1,0 +1,77 @@
+---
+// Горизонтальный логотип: знак слева, «RUSSONLINEUZ» и подпись справа.
+// Надпись — SVG-картинка (role="img"): это логотип, а не текст, поэтому цвета бренда
+// не проверяются на контраст как обычный текст, а подпись для скринридера одна — «RUSSONLINEUZ».
+import Mark from './Mark.astro';
+
+interface Props {
+  variant?: 'light' | 'dark';
+  tagline?: string;
+}
+
+const { variant = 'light', tagline = 'Rus tili online' } = Astro.props;
+
+const colors =
+  variant === 'light'
+    ? { name: '#1F2D4D', uz: '#C8553D', tagline: '#A8432F' }
+    : { name: '#FFF6EC', uz: '#E07A5F', tagline: '#F2B5A3' };
+---
+
+<span class="logo">
+  <Mark variant={variant} class="logo__mark" />
+  {/* Единицы: кегль названия = 100, подписи = 57 (как 14 px / 8 px в исходной вёрстке) */}
+  <svg class="logo__word" viewBox="0 0 850 144" role="img" aria-label="RUSSONLINEUZ">
+    <text x="0" y="72" font-family="Montserrat, Arial, sans-serif" font-weight="800" font-size="100" fill={colors.name}
+      >RUSSONLINE<tspan fill={colors.uz}>UZ</tspan></text
+    >
+    <text
+      x="2"
+      y="140"
+      font-family="Montserrat, Arial, sans-serif"
+      font-weight="600"
+      font-size="57"
+      letter-spacing="14"
+      fill={colors.tagline}>{tagline.toUpperCase()}</text
+    >
+  </svg>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 160px;
+  }
+
+  .logo :global(.logo__mark) {
+    width: 34px;
+    height: auto;
+    flex: none;
+  }
+
+  /* Высота надписи задаёт кегль: 20 px ≈ название 14 px */
+  .logo__word {
+    height: 20px;
+    width: auto;
+    overflow: visible;
+  }
+
+  @media (min-width: 400px) {
+    .logo :global(.logo__mark) {
+      width: 42px;
+    }
+    .logo__word {
+      height: 23px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .logo :global(.logo__mark) {
+      width: 54px;
+    }
+    .logo__word {
+      height: 29px;
+    }
+  }
+</style>

@@ -1,0 +1,236 @@
+---
+import tariffs from '../data/tariffs.json';
+import { fill, formatSum, type Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+
+type Tariff = (typeof tariffs.individual)[number];
+
+const tabs = [
+  { key: 'individual', label: t.pricing.tabIndividual, nameTpl: t.pricing.individualName, items: tariffs.individual },
+  { key: 'group', label: t.pricing.tabGroup, nameTpl: t.pricing.groupName, items: tariffs.group },
+] as const;
+
+const days = t.days as Record<string, string>;
+const schedule = (tariff: Tariff) => {
+  const d = tariff.days.map((k) => days[k]).join(', ');
+  return tariff.times.length ? `${d} · ${tariff.times.join(` ${t.pricing.timeOr} `)}` : d;
+};
+---
+
+<section class="section pricing" id="narxlar">
+  <div class="container reveal">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">{t.pricing.eyebrow}</span>
+      <h2>{t.pricing.title}</h2>
+    </div>
+
+    <div class="pricing__tabs" role="tablist" aria-label={t.pricing.title} data-tabs>
+      {
+        tabs.map((tab, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${tab.key}`}
+            aria-controls={`panel-${tab.key}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+            data-tab={tab.key}
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+
+    {
+      tabs.map((tab, i) => (
+        <div
+          class="pricing__panel"
+          role="tabpanel"
+          id={`panel-${tab.key}`}
+          aria-labelledby={`tab-${tab.key}`}
+          hidden={i !== 0}
+          data-panel={tab.key}
+        >
+          {tab.items.map((tariff) => (
+            <article class:list={['card', { 'card--featured': tariff.featured }]}>
+              {tariff.featured && <span class="card__badge">{t.pricing.badge}</span>}
+              <h3>{fill(tab.nameTpl, { n: tariff.perWeek })}</h3>
+              <p class="card__schedule">{schedule(tariff)}</p>
+              <p class="card__price">
+                <strong>{formatSum(tariff.priceMonth)}</strong> {t.pricing.perMonth}
+              </p>
+              <p class="card__per-lesson">
+                {fill(t.pricing.perLesson, { n: formatSum(tariff.priceMonth / tariff.lessonsPerMonth) })}
+              </p>
+              <ul class="card__list">
+                <li>{fill(t.pricing.lessons, { n: tariff.lessonsPerMonth })}</li>
+                <li>{fill(t.pricing.duration, { n: tariff.durationMonths })}</li>
+              </ul>
+              <p class="card__free">{t.pricing.free}</p>
+              <a
+                href="#ariza"
+                class="btn btn--primary btn--block"
+                data-choose-tariff={tariff.id}
+                data-format={tab.key}
+                data-tariff-name={`${fill(tab.nameTpl, { n: tariff.perWeek })} — ${formatSum(tariff.priceMonth)} ${t.pricing.perMonth}`}
+              >
+                {t.pricing.choose}
+              </a>
+            </article>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .pricing__tabs {
+    display: flex;
+    gap: 6px;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    padding: 6px;
+    border-radius: 999px;
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .pricing__tabs button {
+    flex: 1;
+    min-height: 48px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--navy);
+    font: 700 15px/1.2 var(--font);
+    cursor: pointer;
+  }
+
+  .pricing__tabs button[aria-selected='true'] {
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .pricing__panel {
+    display: grid;
+    gap: 20px;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .pricing__panel[hidden] {
+    display: none;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px 24px;
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  .card--featured {
+    border-color: var(--terra);
+  }
+
+  .card__badge {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: var(--navy);
+    color: var(--cream);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .card h3 {
+    font-size: 19px;
+  }
+
+  .card__schedule {
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--terra-dark);
+  }
+
+  .card__price {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .card__price strong {
+    font-weight: 900;
+    font-size: clamp(34px, 9vw, 42px);
+    letter-spacing: -0.02em;
+  }
+
+  .card__per-lesson {
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  .card__list {
+    display: grid;
+    gap: 6px;
+    margin: 20px 0;
+    padding: 16px 0 0 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .card__free {
+    margin-top: auto;
+    margin-bottom: 14px;
+    font-weight: 800;
+    color: var(--terra-dark);
+  }
+
+  @media (min-width: 720px) {
+    .pricing__panel {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  const tablist = document.querySelector<HTMLElement>('[data-tabs]');
+  const tabs = Array.from(tablist?.querySelectorAll<HTMLButtonElement>('[data-tab]') ?? []);
+
+  const select = (tab: HTMLButtonElement) => {
+    for (const t of tabs) {
+      const active = t === tab;
+      t.setAttribute('aria-selected', String(active));
+      t.tabIndex = active ? 0 : -1;
+      const panel = document.querySelector<HTMLElement>(`[data-panel="${t.dataset.tab}"]`);
+      if (panel) panel.hidden = !active;
+    }
+  };
+
+  tabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (e) => {
+      const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!dir) return;
+      const next = tabs[(i + dir + tabs.length) % tabs.length];
+      select(next);
+      next.focus();
+    });
+  });
+</script>

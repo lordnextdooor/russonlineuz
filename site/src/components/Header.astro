@@ -1,0 +1,259 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { homePath, type Dict, type Locale } from '../i18n';
+
+interface Props {
+  t: Dict;
+  lang: Locale;
+  /** Эта же страница на другом языке — для переключателя UZ | RU */
+  alternates?: Record<Locale, string>;
+}
+
+const { t, lang, alternates = { uz: homePath('uz'), ru: homePath('ru') } } = Astro.props;
+// Якоря ведут на лендинг, чтобы меню работало и со служебных страниц
+const home = homePath(lang);
+const links = [
+  { href: `${home}#kurslar`, label: t.nav.courses },
+  { href: `${home}#narxlar`, label: t.nav.prices },
+  { href: `${home}#ustoz`, label: t.nav.teacher },
+  { href: `${home}#savollar`, label: t.nav.faq },
+];
+---
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a href={homePath(lang)} class="header__logo">
+      <Logo />
+    </a>
+
+    <nav class="header__nav" id="site-nav" aria-label={t.nav.menu} data-nav>
+      <ul class="header__links">
+        {links.map((l) => <li><a href={l.href} data-nav-link>{l.label}</a></li>)}
+      </ul>
+      <div class="lang" role="group" aria-label={t.nav.langLabel}>
+        <a
+          href={alternates.uz}
+          lang="uz"
+          aria-current={lang === 'uz' ? 'true' : undefined}
+          data-event="switch_lang"
+          data-event-label="uz">UZ</a
+        >
+        <span aria-hidden="true">|</span>
+        <a
+          href={alternates.ru}
+          lang="ru"
+          aria-current={lang === 'ru' ? 'true' : undefined}
+          data-event="switch_lang"
+          data-event-label="ru">RU</a
+        >
+      </div>
+    </nav>
+
+    <a href={`${home}#ariza`} class="btn btn--primary header__cta">
+      <span class="header__cta-short">{t.nav.ctaShort}</span>
+      <span class="header__cta-full">{t.nav.cta}</span>
+    </a>
+
+    <button
+      class="header__burger"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      aria-label={t.nav.menu}
+      data-burger
+    >
+      <Icon name="menu" class="icon-open" />
+      <Icon name="close" class="icon-close" />
+    </button>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 246, 236, 0.94);
+    backdrop-filter: saturate(1.4) blur(10px);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .header.is-scrolled {
+    box-shadow: 0 1px 0 var(--line), 0 6px 20px -14px rgba(31, 45, 77, 0.4);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: var(--header-h);
+  }
+
+  @media (min-width: 768px) {
+    .header__inner {
+      gap: 12px;
+    }
+  }
+
+  .header__logo {
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .header__cta {
+    min-height: 44px;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+
+  .header__cta-full {
+    display: none;
+  }
+
+  .header__burger {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 44px;
+    border: 0;
+    border-radius: 12px;
+    background: transparent;
+    color: var(--navy);
+    cursor: pointer;
+  }
+
+  .header__burger :global(.icon-close),
+  .header__burger[aria-expanded='true'] :global(.icon-open) {
+    display: none;
+  }
+
+  .header__burger[aria-expanded='true'] :global(.icon-close) {
+    display: block;
+  }
+
+  /* Мобильное меню — выпадающая панель под шапкой */
+  .header__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: 8px var(--gutter) 24px;
+    background: var(--cream);
+    box-shadow: 0 16px 24px -16px rgba(31, 45, 77, 0.35);
+  }
+
+  .header__nav.is-open {
+    display: block;
+  }
+
+  .header__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__links a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .lang a {
+    display: inline-grid;
+    place-items: center;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+
+  .lang a[aria-current='true'] {
+    color: var(--terra-dark);
+  }
+
+  @media (min-width: 1024px) {
+    .header__burger {
+      display: none;
+    }
+
+    .header__nav {
+      position: static;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0;
+      background: none;
+      box-shadow: none;
+    }
+
+    .header__links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .header__links a {
+      padding: 8px 0;
+      border: 0;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .header__links a:hover {
+      color: var(--terra-dark);
+    }
+
+    .lang {
+      margin-top: 0;
+    }
+
+    .header__cta {
+      padding: 10px 22px;
+    }
+
+    .header__cta-short {
+      display: none;
+    }
+
+    .header__cta-full {
+      display: inline;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-header]');
+  const burger = document.querySelector<HTMLButtonElement>('[data-burger]');
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+
+  const setOpen = (open: boolean) => {
+    burger?.setAttribute('aria-expanded', String(open));
+    nav?.classList.toggle('is-open', open);
+  };
+
+  burger?.addEventListener('click', () => setOpen(burger.getAttribute('aria-expanded') !== 'true'));
+  nav?.querySelectorAll('[data-nav-link]').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>

@@ -1,0 +1,108 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+import type { Dict, Locale } from '../i18n';
+
+interface Props {
+  t: Dict;
+  lang: Locale;
+}
+
+const { t, lang } = Astro.props;
+const privacyHref = lang === 'uz' ? '/privacy' : '/ru/privacy';
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <Logo variant="dark" tagline={t.footer.tagline} />
+
+    <ul class="footer__links">
+      <li>
+        <a href={`https://instagram.com/${site.instagramSchool}`} target="_blank" rel="noopener" data-event="click_instagram">
+          <Icon name="instagram" size={20} /> Instagram
+        </a>
+      </li>
+      <li>
+        <a href={`https://t.me/${site.telegram}`} target="_blank" rel="noopener" data-event="click_telegram">
+          <Icon name="telegram" size={20} /> Telegram
+        </a>
+      </li>
+      <li><span class="todo">{t.footer.phone}</span></li>
+    </ul>
+
+    <div class="footer__bottom">
+      <span>{t.footer.copyright}</span>
+      <a href={privacyHref}>{t.footer.privacy}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding-block: 48px 96px;
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .footer__inner {
+    display: grid;
+    gap: 28px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 600;
+  }
+
+  .footer__links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    text-decoration: none;
+  }
+
+  .footer__links a:hover {
+    color: var(--peach);
+  }
+
+  .footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 246, 236, 0.16);
+    font-size: 14px;
+    color: rgba(255, 246, 236, 0.75);
+  }
+
+  .footer__bottom a {
+    color: var(--peach);
+  }
+
+  @media (min-width: 768px) {
+    .footer {
+      padding-bottom: 48px;
+    }
+
+    .footer__inner {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+
+    .footer__links {
+      justify-content: flex-end;
+    }
+
+    .footer__bottom {
+      grid-column: 1 / -1;
+    }
+  }
+</style>

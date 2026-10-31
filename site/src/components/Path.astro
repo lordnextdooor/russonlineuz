@@ -1,0 +1,129 @@
+---
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="section path reveal">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow path__eyebrow">{t.path.eyebrow}</span>
+      <h2>{t.path.title}</h2>
+    </div>
+
+    <ol class="path__steps">
+      {
+        t.path.steps.map((step, i) => (
+          <li class="path__step">
+            <span class="path__num">{i + 1}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="path__note">{t.path.note}</p>
+  </div>
+</section>
+
+<style>
+  /* «Aa → Яя» — регистр букв важен, не переводим в заглавные */
+  .path__eyebrow {
+    text-transform: none;
+    letter-spacing: 1px;
+    font-size: 15px;
+  }
+
+  .path__steps {
+    position: relative;
+    display: grid;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Линия шкалы: вертикальная на телефоне */
+  .path__steps::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 24px;
+    bottom: 24px;
+    width: 2px;
+    background: repeating-linear-gradient(to bottom, var(--terra) 0 6px, transparent 6px 12px);
+  }
+
+  .path__step {
+    position: relative;
+    display: flex;
+    gap: 18px;
+  }
+
+  .path__num {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--cream);
+    font-weight: 800;
+    font-size: 20px;
+  }
+
+  .path__step:last-child .path__num {
+    background: var(--terra);
+    color: var(--white);
+  }
+
+  .path__step h3 {
+    font-size: 18px;
+    padding-top: 10px;
+  }
+
+  .path__step p {
+    margin-top: 4px;
+    color: var(--text-muted);
+  }
+
+  .path__note {
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+
+  @media (min-width: 900px) {
+    .path__steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    /* На десктопе шкала горизонтальная */
+    .path__steps::before {
+      left: 24px;
+      right: 24px;
+      top: 23px;
+      bottom: auto;
+      width: auto;
+      height: 2px;
+      background: repeating-linear-gradient(to right, var(--terra) 0 6px, transparent 6px 12px);
+    }
+
+    .path__step {
+      flex-direction: column;
+    }
+
+    .path__step h3 {
+      padding-top: 0;
+    }
+  }
+</style>

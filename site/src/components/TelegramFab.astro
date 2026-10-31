@@ -22,11 +22,12 @@ const { t } = Astro.props;
 </a>
 
 <style>
-  /* Плавающая кнопка Telegram — только на телефоне */
+  /* Плавающая кнопка Telegram — только на телефоне.
+     Поднята над плашкой «Powered by Netlify» (бесплатный тариф, ~64 px в правом нижнем углу) */
   .fab {
     position: fixed;
     right: 16px;
-    bottom: 16px;
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
     z-index: 40;
     display: grid;
     place-items: center;

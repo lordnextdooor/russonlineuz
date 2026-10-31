@@ -1,8 +1,8 @@
 # Сайт RUSSONLINEUZ
 
 Лендинг онлайн-школы русского языка: узбекский (`/`) и русский (`/ru/`).
-Astro 7, обычный CSS, хостинг Vercel. ТЗ — `../SITE_SPEC.md`, брендбук — `../docs/brandbook.md`,
-выкладка — `../docs/deploy.md`.
+Astro 7, обычный CSS, хостинг Netlify (настройки — `netlify.toml`, Base directory в Netlify — `site`). ТЗ — `../SITE_SPEC.md`,
+брендбук — `../docs/brandbook.md`, выкладка — `../docs/deploy.md`.
 
 ## Команды
 
@@ -32,10 +32,10 @@ npm run og       # перерисовать картинки превью public
 
 | Имя | Зачем |
 |---|---|
-| `TELEGRAM_BOT_TOKEN` | токен бота (секрет, только в `.env` и Vercel) |
+| `TELEGRAM_BOT_TOKEN` | токен бота (секрет, только в `.env` и Netlify) |
 | `TELEGRAM_CHAT_ID` | чат, куда приходят заявки |
 | `PUBLIC_YM_ID`, `PUBLIC_GA4_ID`, `PUBLIC_META_PIXEL_ID` | счётчики; пусто — не подключаются |
-| `SITE_URL` | необязательно: адрес сайта вручную. Без него на Vercel берётся основной домен проекта, локально — localhost |
+| `SITE_URL` | необязательно: адрес сайта вручную. Без него на Netlify берётся основной адрес сайта (`URL`), локально — localhost |
 
 ## Защита формы от спама
 

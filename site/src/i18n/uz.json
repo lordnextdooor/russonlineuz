@@ -163,7 +163,7 @@
       { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Sayt egasi: [ЗАПОЛНИТЬ: ФИО / ИП, ИНН]. Biz bilan bogʻlanish: Instagram — @russonlineuz, Telegram — @nyusupovas." },
       { "h": "Qanday maʼlumotlarni yigʻamiz", "p": "Ariza formasi orqali: ismingiz, telefon raqamingiz, Telegram username (agar yozsangiz), tanlagan format, tarif va qulay vaqt." },
       { "h": "Nima uchun", "p": "Faqat siz bilan bogʻlanish, bepul darsni kelishib olish va darslarni tashkil qilish uchun. Maʼlumotlaringizni sotmaymiz va boshqalarga bermaymiz." },
-      { "h": "Maʼlumotlar qayerga boradi", "p": "Ariza ustozning Telegram chatiga yuboriladi. Sayt serverida arizalar saqlanmaydi. Sayt Vercel xostingida ishlaydi." },
+      { "h": "Maʼlumotlar qayerga boradi", "p": "Ariza ustozning Telegram chatiga yuboriladi. Sayt serverida arizalar saqlanmaydi. Sayt Netlify xostingida ishlaydi." },
       { "h": "Statistika va cookie", "p": "Saytni yaxshilash uchun Yandex Metrika, Google Analytics va Meta Pixel ishlatilishi mumkin. Ular cookie fayllaridan foydalanadi va saytdan qanday foydalanilishi haqida statistikani yigʻadi. Cookie fayllarini brauzer sozlamalarida oʻchirib qoʻyishingiz mumkin." },
       { "h": "Huquqlaringiz", "p": "Istalgan vaqtda maʼlumotlaringizni koʻrish, tuzatish yoki oʻchirishni soʻrashingiz mumkin — @nyusupovas ga yozing. Saqlash muddati: [ЗАПОЛНИТЬ]." }
     ]

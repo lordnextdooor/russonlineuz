@@ -35,6 +35,7 @@ npm run og       # перерисовать картинки превью public
 | `TELEGRAM_BOT_TOKEN` | токен бота (секрет, только в `.env` и Vercel) |
 | `TELEGRAM_CHAT_ID` | чат, куда приходят заявки |
 | `PUBLIC_YM_ID`, `PUBLIC_GA4_ID`, `PUBLIC_META_PIXEL_ID` | счётчики; пусто — не подключаются |
+| `SITE_URL` | необязательно: адрес сайта вручную. Без него на Vercel берётся основной домен проекта, локально — localhost |
 
 ## Защита формы от спама
 

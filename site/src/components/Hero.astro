@@ -1,6 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
 import Mark from './Mark.astro';
 import Icon from './Icon.astro';
+import portrait from '../assets/nazokat-portrait.webp';
 import type { Dict } from '../i18n';
 
 interface Props {
@@ -36,10 +38,18 @@ const trustIcons = ['video', 'book', 'check'];
     </div>
 
     <div class="hero__visual">
-      {/* TODO: заменить плейсхолдер на фото Назокат (WebP/AVIF через astro:assets) */}
-      <div class="hero__photo" role="img" aria-label={t.hero.photoAlt}>
-        <Mark class="hero__photo-mark" />
-        <span class="todo">{t.hero.photoPlaceholder}</span>
+      <div class="hero__photo">
+        <Picture
+          src={portrait}
+          alt={t.hero.photoAlt}
+          formats={['avif', 'webp']}
+          fallbackFormat="webp"
+          widths={[360, 480, 720, 852]}
+          sizes="(min-width: 560px) 480px, 100vw"
+          loading="eager"
+          fetchpriority="high"
+          class="hero__img"
+        />
       </div>
       <div class="hero__sign" aria-hidden="true">
         <span>Aa</span>
@@ -120,24 +130,21 @@ const trustIcons = ['video', 'book', 'check'];
   }
 
   .hero__photo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
     aspect-ratio: 4 / 5;
-    max-height: 520px;
+    max-height: 560px;
     width: 100%;
+    overflow: hidden;
     border-radius: var(--radius-lg);
-    background: radial-gradient(circle at 30% 20%, #ffffff 0%, rgba(242, 181, 163, 0.55) 100%);
+    background: var(--peach);
     box-shadow: var(--shadow);
-    text-align: center;
-    padding: 24px;
   }
 
-  .hero__photo :global(.hero__photo-mark) {
-    width: 45%;
-    opacity: 0.9;
+  .hero__photo :global(.hero__img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Лицо в верхней трети кадра — при обрезке держим его в центре внимания */
+    object-position: 50% 20%;
   }
 
   .hero__sign {

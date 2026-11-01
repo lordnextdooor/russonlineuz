@@ -71,6 +71,8 @@ const schedule = (tariff: Tariff) => {
               <ul class="card__list">
                 <li>{fill(t.pricing.lessons, { n: tariff.lessonsPerMonth })}</li>
                 <li>{fill(t.pricing.duration, { n: tariff.durationMonths })}</li>
+                {tariff.missAllowed > 0 && <li>{fill(t.pricing.missAllowed, { n: tariff.missAllowed })}</li>}
+                {tariff.recording && <li>{t.pricing.recording}</li>}
               </ul>
               <p class="card__free">{t.pricing.free}</p>
               <a

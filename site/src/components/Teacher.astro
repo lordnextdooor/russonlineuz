@@ -1,7 +1,8 @@
 ---
+import { Picture } from 'astro:assets';
 import Icon from './Icon.astro';
-import Mark from './Mark.astro';
 import site from '../data/site.json';
+import photo from '../assets/nazokat-laptop.webp';
 import type { Dict } from '../i18n';
 
 interface Props {
@@ -13,10 +14,16 @@ const { t } = Astro.props;
 
 <section class="section teacher reveal" id="ustoz">
   <div class="container teacher__grid">
-    {/* TODO: фото Назокат (портрет) — заменить плейсхолдер */}
-    <div class="teacher__photo" role="img" aria-label={t.hero.photoAlt}>
-      <Mark class="teacher__photo-mark" />
-      <span class="todo">{t.hero.photoPlaceholder}</span>
+    <div class="teacher__photo">
+      <Picture
+        src={photo}
+        alt={t.hero.photoAlt}
+        formats={['avif', 'webp']}
+        fallbackFormat="webp"
+        widths={[360, 480, 778]}
+        sizes="(min-width: 900px) 440px, 100vw"
+        class="teacher__img"
+      />
     </div>
 
     <div class="teacher__text">
@@ -24,9 +31,17 @@ const { t } = Astro.props;
       <h2>{t.teacher.title}</h2>
       <p class="teacher__role">{t.teacher.role}</p>
       <p class="teacher__intro">{t.teacher.intro}</p>
-      <p><span class="todo">{t.teacher.story}</span></p>
+      {/* Абзац «о себе» показываем, только когда владелец его заполнит */}
+      {t.teacher.story && <p class="teacher__story">{t.teacher.story}</p>}
       <ul class="teacher__facts">
-        {t.teacher.facts.map((f) => <li><span class="todo">{f}</span></li>)}
+        {
+          t.teacher.facts.map((f) => (
+            <li class:list={{ 'fact--text': !/\d/.test(f.value) }}>
+              <strong>{f.value}</strong>
+              <span>{f.label}</span>
+            </li>
+          ))
+        }
       </ul>
       <a
         class="btn btn--ghost"
@@ -49,23 +64,21 @@ const { t } = Astro.props;
   }
 
   .teacher__photo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 4 / 5;
     max-width: 440px;
     width: 100%;
+    margin-inline: auto;
+    overflow: hidden;
     border-radius: var(--radius-lg);
-    background: radial-gradient(circle at 70% 25%, #ffffff 0%, rgba(242, 181, 163, 0.55) 100%);
+    background: var(--peach);
     box-shadow: var(--shadow);
-    padding: 24px;
-    text-align: center;
   }
 
-  .teacher__photo :global(.teacher__photo-mark) {
-    width: 38%;
+  .teacher__photo :global(.teacher__img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 35%;
   }
 
   .teacher__role {
@@ -84,11 +97,50 @@ const { t } = Astro.props;
     line-height: 1.4;
   }
 
+  .teacher__story {
+    color: var(--text-muted);
+  }
+
+  /* Факты карточками: крупное значение и подпись */
   .teacher__facts {
     display: grid;
-    gap: 8px;
-    margin: 20px 0 28px;
-    padding-left: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 24px 0 28px;
+    padding: 0;
+    list-style: none;
+  }
+
+  .teacher__facts li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 18px;
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .teacher__facts strong {
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--terra);
+  }
+
+  /* Факт-текст («Oliy maʼlumotli») длиннее цифр — на всю строку и чуть мельче */
+  .teacher__facts .fact--text {
+    grid-column: 1 / -1;
+  }
+
+  .teacher__facts .fact--text strong {
+    font-size: 21px;
+  }
+
+  .teacher__facts span {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-muted);
   }
 
   @media (min-width: 900px) {

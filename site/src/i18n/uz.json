@@ -26,8 +26,7 @@
     "ctaPrimary": "1-dars bepul — yozilish",
     "ctaSecondary": "Narxlarni koʻrish",
     "trust": ["Jonli darslar Zoom orqali", "Har bir darsga lugʻat va test", "1-dars bepul"],
-    "photoAlt": "Ustoz Nazokat Yusupova",
-    "photoPlaceholder": "[ЗАПОЛНИТЬ: фото Назокат]"
+    "photoAlt": "Ustoz Nazokat Yusupova"
   },
   "audience": {
     "eyebrow": "Kimlar uchun",
@@ -69,11 +68,11 @@
     "title": "Nazokat Yusupova",
     "role": "Rus tili oʻqituvchisi",
     "intro": "Salom! Men Nazokat. Barcha darslarni oʻzim olib boraman — siz bilan birinchi darsdan oxirgisigacha birga boʻlaman.",
-    "story": "[ЗАПОЛНИТЬ: 2–3 предложения от первого лица — почему преподаёт, как проходят уроки]",
+    "story": "",
     "facts": [
-      "[ЗАПОЛНИТЬ: опыт преподавания]",
-      "[ЗАПОЛНИТЬ: образование]",
-      "[ЗАПОЛНИТЬ: сколько учеников обучено]"
+      { "value": "5+", "label": "yillik tajriba" },
+      { "value": "1000+", "label": "oʻquvchi" },
+      { "value": "Oliy maʼlumotli", "label": "pedagog-filolog" }
     ],
     "instagram": "Instagram"
   },
@@ -91,6 +90,8 @@
     "perLesson": "≈ {n} soʻm / dars",
     "badge": "Tez natija",
     "free": "1-dars bepul",
+    "missAllowed": "Oʻtkazib yuborilgan {n} ta dars kuymaydi",
+    "recording": "Darsni oʻtkazib yuborsangiz — yozuvi bor",
     "choose": "Tanlash"
   },
   "days": {
@@ -120,7 +121,7 @@
       { "q": "Individual yoki guruh — qaysi biri menga mos?", "a": "Individual darsda butun vaqt faqat sizga bagʻishlanadi. Mini-guruhda 5–6 kishi bilan birga gapirasiz, narxi esa ancha arzon. Tanlay olmasangiz — bepul darsda birga hal qilamiz." },
       { "q": "Qancha vaqtda gapira boshlayman?", "a": "Oddiy iboralarni birinchi darsdanoq gapirasiz. Haftasiga 3 marta shugʻullansangiz, 3–4 oyda oddiy suhbatni erkin olib borasiz. Natija muntazam qatnashish va uy vazifasiga bogʻliq." },
       { "q": "Toʻlov qanday qilinadi?", "a": "[ЗАПОЛНИТЬ: Click / Payme / перевод на карту]" },
-      { "q": "Darsni oʻtkazib yuborsam nima boʻladi?", "a": "[ЗАПОЛНИТЬ: правило переноса]" }
+      { "q": "Darsni oʻtkazib yuborsam nima boʻladi?", "a": "Guruh darslari belgilangan vaqtda oʻtadi va qoldirilmaydi. Darsni oʻtkazib yuborsangiz, yozib olingan darsni koʻrib, keyingi darsga tayyor boʻlib kelasiz. Individual tariflarda dars kuymaydi: 900 000 soʻmlik tarifda 1 marta, 1 350 000 soʻmlik tarifda 2 marta darsni oʻtkazib yuborishingiz mumkin." }
     ]
   },
   "form": {

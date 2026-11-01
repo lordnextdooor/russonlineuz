@@ -13,8 +13,9 @@ const siteUrl =
 export default defineConfig({
   site: siteUrl,
   // Страницы статические; на сервере работает только /api/lead (prerender = false)
-  // Эмуляция Netlify в `astro dev` не нужна (edge-функции требуют Deno); переменные — из .env
-  adapter: netlify({ devFeatures: false }),
+  // Эмуляция Netlify в `astro dev` не нужна (edge-функции требуют Deno); переменные — из .env.
+  // Фото нарезаем при сборке (sharp), а не через Image CDN Netlify — одинаково локально и на сайте
+  adapter: netlify({ devFeatures: false, imageCDN: false }),
   // CSS небольшой (~25 КБ) — встраиваем в HTML, чтобы не блокировать первую отрисовку
   build: { inlineStylesheets: 'always' },
   i18n: {

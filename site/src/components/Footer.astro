@@ -20,15 +20,14 @@ const privacyHref = lang === 'uz' ? '/privacy/' : '/ru/privacy/';
     <ul class="footer__links">
       <li>
         <a href={`https://instagram.com/${site.instagram}`} target="_blank" rel="noopener" data-event="click_instagram">
-          <Icon name="instagram" size={20} /> Instagram
+          <Icon name="instagram" size={20} /> Instagram <span class="footer__handle">@{site.instagram}</span>
         </a>
       </li>
       <li>
         <a href={`https://t.me/${site.telegram}`} target="_blank" rel="noopener" data-event="click_telegram">
-          <Icon name="telegram" size={20} /> Telegram
+          <Icon name="telegram" size={20} /> Telegram <span class="footer__handle">@{site.telegram}</span>
         </a>
       </li>
-      <li><span class="todo">{t.footer.phone}</span></li>
     </ul>
 
     <div class="footer__bottom">
@@ -67,6 +66,11 @@ const privacyHref = lang === 'uz' ? '/privacy/' : '/ru/privacy/';
     gap: 8px;
     min-height: 44px;
     text-decoration: none;
+  }
+
+  .footer__handle {
+    font-weight: 500;
+    color: var(--peach);
   }
 
   .footer__links a:hover {

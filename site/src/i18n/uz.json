@@ -120,7 +120,7 @@
       { "q": "Bepul dars qanday oʻtadi?", "a": "Tanishamiz, darajangizni aniqlaymiz va birga qisqa suhbat amaliyoti qilamiz. Hech qanday majburiyat yoʻq." },
       { "q": "Individual yoki guruh — qaysi biri menga mos?", "a": "Individual darsda butun vaqt faqat sizga bagʻishlanadi. Mini-guruhda 5–6 kishi bilan birga gapirasiz, narxi esa ancha arzon. Tanlay olmasangiz — bepul darsda birga hal qilamiz." },
       { "q": "Qancha vaqtda gapira boshlayman?", "a": "Oddiy iboralarni birinchi darsdanoq gapirasiz. Haftasiga 3 marta shugʻullansangiz, 3–4 oyda oddiy suhbatni erkin olib borasiz. Natija muntazam qatnashish va uy vazifasiga bogʻliq." },
-      { "q": "Toʻlov qanday qilinadi?", "a": "[ЗАПОЛНИТЬ: Click / Payme / перевод на карту]" },
+      { "q": "Toʻlov qanday qilinadi?", "a": "Kartaga pul oʻtkazish orqali — Click yoki Payme ilovasida, oʻzingizga qaysi biri qulay boʻlsa." },
       { "q": "Darsni oʻtkazib yuborsam nima boʻladi?", "a": "Guruh darslari belgilangan vaqtda oʻtadi va qoldirilmaydi. Darsni oʻtkazib yuborsangiz, yozib olingan darsni koʻrib, keyingi darsga tayyor boʻlib kelasiz. Individual tariflarda dars kuymaydi: 900 000 soʻmlik tarifda 1 marta, 1 350 000 soʻmlik tarifda 2 marta darsni oʻtkazib yuborishingiz mumkin." }
     ]
   },
@@ -161,12 +161,12 @@
     "title": "Maxfiylik siyosati",
     "updated": "Oxirgi yangilanish: 2026-yil 1-noyabr",
     "sections": [
-      { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Sayt egasi: [ЗАПОЛНИТЬ: ФИО / ИП, ИНН]. Biz bilan bogʻlanish: Instagram — @russonlineuz, Telegram — @nyusupovas." },
+      { "h": "Kim maʼlumotlarni qayta ishlaydi", "p": "Maʼlumotlarni RUSSONLINEUZ onlayn maktabi qayta ishlaydi. Biz bilan bogʻlanish: Instagram — @russonlineuz, Telegram — @nyusupovas." },
       { "h": "Qanday maʼlumotlarni yigʻamiz", "p": "Ariza formasi orqali: ismingiz, telefon raqamingiz, Telegram username (agar yozsangiz), tanlagan format, tarif va qulay vaqt." },
       { "h": "Nima uchun", "p": "Faqat siz bilan bogʻlanish, bepul darsni kelishib olish va darslarni tashkil qilish uchun. Maʼlumotlaringizni sotmaymiz va boshqalarga bermaymiz." },
       { "h": "Maʼlumotlar qayerga boradi", "p": "Ariza ustozning Telegram chatiga yuboriladi. Sayt serverida arizalar saqlanmaydi. Sayt Netlify xostingida ishlaydi." },
       { "h": "Statistika va cookie", "p": "Saytni yaxshilash uchun Yandex Metrika, Google Analytics va Meta Pixel ishlatilishi mumkin. Ular cookie fayllaridan foydalanadi va saytdan qanday foydalanilishi haqida statistikani yigʻadi. Cookie fayllarini brauzer sozlamalarida oʻchirib qoʻyishingiz mumkin." },
-      { "h": "Huquqlaringiz", "p": "Istalgan vaqtda maʼlumotlaringizni koʻrish, tuzatish yoki oʻchirishni soʻrashingiz mumkin — @nyusupovas ga yozing. Saqlash muddati: [ЗАПОЛНИТЬ]." }
+      { "h": "Huquqlaringiz", "p": "Istalgan vaqtda maʼlumotlaringizni koʻrish, tuzatish yoki oʻchirishni soʻrashingiz mumkin — @nyusupovas ga yozing." }
     ]
   },
   "notFound": {
@@ -176,7 +176,6 @@
     "button": "Bosh sahifaga"
   },
   "footer": {
-    "phone": "Telefon: [ЗАПОЛНИТЬ]",
     "privacy": "Maxfiylik siyosati",
     "copyright": "© 2026 RUSSONLINEUZ"
   },

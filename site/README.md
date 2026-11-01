@@ -22,7 +22,7 @@ npm run og       # перерисовать картинки превью public
 |---|---|
 | Тексты сайта | `src/i18n/uz.json`, `src/i18n/ru.json` (ключи должны совпадать) |
 | Цены и расписание | `src/data/tariffs.json` |
-| Instagram / Telegram / телефон | `src/data/site.json` |
+| Instagram, Telegram, ссылки на каналы демо-уроков и результатов | `src/data/site.json` |
 | Блоки лендинга | `src/components/*.astro`, порядок — `src/components/Landing.astro` |
 | Цвета и шрифты | `src/styles/global.css` (по брендбуку) |
 | Приём заявок → Telegram | `src/pages/api/lead.ts`, `src/lib/lead.ts` |

@@ -33,7 +33,7 @@
     "title": "Bu kurs sizga mos, agar…",
     "cards": [
       { "icon": "briefcase", "title": "Ish uchun rus tili kerak", "text": "Hamkasblar va mijozlar bilan bemalol gaplashing." },
-      { "icon": "globe", "title": "Chet elga ketish rejangiz bor", "text": "Yangi joyda hujjatlar, doʻkon va shifokor bilan muloqot qiling." },
+      { "icon": "globe", "title": "Rossiyaga borishni rejalashtiryapsiz", "text": "Yangi joyda hujjatlar, doʻkon va shifokor bilan muloqot qiling." },
       { "icon": "book", "title": "Oʻqish uchun kerak", "text": "Darslar va imtihonlar uchun mustahkam asos yarating." },
       { "icon": "chat", "title": "Gapirishdan uyalasiz", "text": "Bu yerda xato qilish — oldinga qoʻyilgan qadam." }
     ],

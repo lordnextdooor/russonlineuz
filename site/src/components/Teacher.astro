@@ -78,7 +78,8 @@ const { t } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
+    /* Кадр прижат к верху: над головой остаётся воздух, снизу обрезается только диван */
+    object-position: 50% 0%;
   }
 
   .teacher__role {

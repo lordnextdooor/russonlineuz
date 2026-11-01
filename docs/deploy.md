@@ -116,7 +116,8 @@
 3. Пересоберите сайт.
 
 Сайт сам отправляет события: `lead` (заявка отправлена), `choose_tariff`, `click_telegram`,
-`click_instagram`, `switch_lang`. В Метрике создайте цели с такими же названиями
+`click_instagram`, `click_demo` (канал демо-уроков), `click_results` (канал результатов),
+`switch_lang`. В Метрике создайте цели с такими же названиями
 (тип «JavaScript-событие»).
 
 ---

@@ -1,0 +1,118 @@
+---
+// «Сначала посмотрите»: демо-уроки и результаты учеников в Telegram-каналах
+import Icon from './Icon.astro';
+import site from '../data/site.json';
+import type { Dict } from '../i18n';
+
+interface Props {
+  t: Dict;
+}
+
+const { t } = Astro.props;
+const cards = [
+  {
+    icon: 'video',
+    title: t.proof.demoTitle,
+    text: t.proof.demoText,
+    button: t.proof.demoButton,
+    href: site.demoChannel,
+    event: 'click_demo',
+  },
+  {
+    icon: 'star',
+    title: t.proof.resultsTitle,
+    text: t.proof.resultsText,
+    button: t.proof.resultsButton,
+    href: site.resultsChannel,
+    event: 'click_results',
+  },
+];
+---
+
+<section class="section section--navy proof" id="natijalar">
+  <div class="container reveal">
+    <div class="section-head section-head--center">
+      <span class="eyebrow">{t.proof.eyebrow}</span>
+      <h2>{t.proof.title}</h2>
+    </div>
+
+    <div class="proof__grid">
+      {
+        cards.map((c) => (
+          <article class="proof__card">
+            <span class="proof__icon">
+              <Icon name={c.icon} size={28} />
+            </span>
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+            <a class="btn btn--primary" href={c.href} target="_blank" rel="noopener" data-event={c.event}>
+              <Icon name="telegram" size={22} />
+              {c.button}
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof__grid {
+    display: grid;
+    gap: 16px;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .proof__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 246, 236, 0.04);
+  }
+
+  .proof__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: rgba(224, 122, 95, 0.18);
+    color: var(--terra-light);
+  }
+
+  .proof__card h3 {
+    font-size: 21px;
+  }
+
+  .proof__card p {
+    margin: 8px 0 24px;
+    color: var(--text-muted);
+  }
+
+  /* На телефоне кнопки на всю ширину карточки — одинаковые и в одну строку */
+  .proof__card .btn {
+    width: 100%;
+    margin-top: auto;
+    padding-inline: 14px;
+  }
+
+  @media (min-width: 720px) {
+    .proof__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .proof__card {
+      padding: 36px 32px;
+    }
+
+    .proof__card .btn {
+      width: auto;
+      padding-inline: 28px;
+    }
+  }
+</style>

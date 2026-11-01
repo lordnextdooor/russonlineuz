@@ -7,6 +7,7 @@ import Audience from './Audience.astro';
 import Lessons from './Lessons.astro';
 import Path from './Path.astro';
 import Teacher from './Teacher.astro';
+import Proof from './Proof.astro';
 import Pricing from './Pricing.astro';
 import Steps from './Steps.astro';
 import Faq from './Faq.astro';
@@ -33,6 +34,7 @@ const jsonLd = landingSchema(t, lang, Astro.site!);
     <Lessons t={t} />
     <Path t={t} />
     <Teacher t={t} />
+    <Proof t={t} />
     <Pricing t={t} />
     <Steps t={t} />
     {/* Блок отзывов скрыт, пока нет настоящих отзывов учеников (ТЗ, п. 8) */}

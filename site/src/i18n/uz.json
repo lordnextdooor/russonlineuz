@@ -76,6 +76,16 @@
     ],
     "instagram": "Instagram"
   },
+  "proof": {
+    "eyebrow": "Oʻzingiz koʻring",
+    "title": "Avval koʻring — keyin qaror qiling",
+    "demoTitle": "Bepul demo darslar",
+    "demoText": "Telegram kanalimizda darslar qanday oʻtishini oʻz koʻzingiz bilan koʻring.",
+    "demoButton": "Darslarni koʻrish",
+    "resultsTitle": "Oʻquvchilar natijalari",
+    "resultsText": "Nazokat ustoz oʻquvchilarining haqiqiy natijalari — bitta kanalda.",
+    "resultsButton": "Natijalarni koʻrish"
+  },
   "pricing": {
     "eyebrow": "Narxlar",
     "title": "Kurslar va narxlar",

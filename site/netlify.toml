@@ -6,3 +6,5 @@
 [build.environment]
   # Astro 7 требует Node 22.23+
   NODE_VERSION = "24"
+  # Номера счётчиков аналитики публичные и обязательно есть в коде страниц — не считать их секретами
+  SECRETS_SCAN_OMIT_KEYS = "PUBLIC_YM_ID,PUBLIC_GA4_ID,PUBLIC_META_PIXEL_ID"

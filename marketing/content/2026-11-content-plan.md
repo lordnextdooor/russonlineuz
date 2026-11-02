@@ -11,13 +11,8 @@ Instagram @russonlineuz + Telegram-канал демо-уроков. Текст�
 **Ссылка в шапке профиля** (чтобы Метрика видела заявки из Instagram):
 `https://russonlineuz.netlify.app/?utm_source=instagram&utm_medium=bio&utm_campaign=noyabr`
 
-**Шапка профиля** (по брендбуку):
-```
-Rus tili online · noldan
-Jonli darslar Zoom orqali
-1-dars bepul → @nyusupovas
-```
-Highlights: Kurslar · Narxlar · Fikrlar · Darslar.
+**Шапка профиля и Highlights** — под личный бренд Назокат: варианты текста, ссылки и готовые обложки в [`marketing/design/instagram-profile.md`](../design/instagram-profile.md).
+Highlights: Men haqimda · Bepul dars · Narxlar · Natijalar · Fikrlar · Dars jarayoni · Qabul.
 
 ## Ритм недели
 

@@ -29,7 +29,7 @@ export default defineConfig({
       TELEGRAM_BOT_TOKEN: envField.string({ context: 'server', access: 'secret', optional: true }),
       TELEGRAM_CHAT_ID: envField.string({ context: 'server', access: 'secret', optional: true }),
       // ID счётчиков — публичные (видны в коде страницы), подставляются при сборке
-      PUBLIC_YM_ID: envField.string({ context: 'client', access: 'public', optional: true }),
+      PUBLIC_YM_ID: envField.string({ context: 'client', access: 'public', default: '113987790' }),
       PUBLIC_GA4_ID: envField.string({ context: 'client', access: 'public', optional: true }),
       PUBLIC_META_PIXEL_ID: envField.string({ context: 'client', access: 'public', optional: true }),
     },

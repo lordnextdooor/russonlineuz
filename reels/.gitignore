@@ -1,0 +1,4 @@
+node_modules/
+out/
+# Звук пересобирается: node scripts/make-audio.mjs
+public/audio/

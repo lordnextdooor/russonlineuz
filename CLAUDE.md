@@ -49,6 +49,7 @@
 - content-creator — контент-план и тексты для Instagram и Telegram.
 - brand-designer — графика по брендбуку (посты, сторис, креативы) в PNG.
 - video-producer — сценарии Reels, раскадровки, субтитры, план съёмки.
+- motion-editor — моушн-Reels кодом в Remotion (папка reels/) по сценариям и marketing/reels/motion-guide.md.
 - ads-specialist — таргет Meta, Telegram Ads, Яндекс Директ, UTM, разбор результатов.
 - sales-coach — скрипты ответа на заявку, пробный урок, возражения, продления.
 - seo-analytics — SEO, Яндекс Метрика (счётчик 113987790), Вебмастер, Search Console.

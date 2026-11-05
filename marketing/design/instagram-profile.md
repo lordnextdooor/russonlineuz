@@ -76,7 +76,7 @@ Guruh 5–6 kishi · 5+ yil tajriba
 
 Первая ссылка — та, что видна в профиле. Ставим **сайт с UTM**, чтобы Метрика видела заявки из Instagram:
 ```
-https://russonlineuz.netlify.app/?utm_source=instagram&utm_medium=bio&utm_campaign=noyabr&utm_content=bio_c
+https://russonline.uz/?utm_source=instagram&utm_medium=bio&utm_campaign=noyabr&utm_content=bio_c
 ```
 Остальные: Telegram t.me/nyusupovas, Telegram-канал демо-уроков. После покупки домена — заменить адрес сайта.
 

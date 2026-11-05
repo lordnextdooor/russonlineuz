@@ -9,7 +9,7 @@ Instagram @russonlineuz + Telegram-канал демо-уроков. Текст�
 - Заявки с сайта из Instagram — считаем в Яндекс Метрике (цель `lead`, источник по UTM).
 
 **Ссылка в шапке профиля** (чтобы Метрика видела заявки из Instagram):
-`https://russonlineuz.netlify.app/?utm_source=instagram&utm_medium=bio&utm_campaign=noyabr`
+`https://russonline.uz/?utm_source=instagram&utm_medium=bio&utm_campaign=noyabr`
 
 **Шапка профиля и Highlights** — под личный бренд Назокат: варианты текста, ссылки и готовые обложки в [`marketing/design/instagram-profile.md`](../design/instagram-profile.md).
 Highlights: Men haqimda · Bepul dars · Narxlar · Natijalar · Fikrlar · Dars jarayoni · Qabul.
@@ -268,7 +268,7 @@ Highlights: Men haqimda · Bepul dars · Narxlar · Natijalar · Fikrlar · Dars
 ## Telegram-канал демо-уроков (Пн, Ср, Пт)
 - **Пн:** фрагмент урока 1–2 минуты + «Bugungi darsdan parcha 🎥».
 - **Ср:** слово недели + опрос-викторина в Telegram (те же вопросы, что в сторис).
-- **Пт:** «Shu hafta nimalarni oʻrgandik» + приглашение: «Jonli darsga qatnashmoqchimisiz? 1-dars bepul → russonlineuz.netlify.app/?utm_source=telegram&utm_medium=channel».
+- **Пт:** «Shu hafta nimalarni oʻrgandik» + приглашение: «Jonli darsga qatnashmoqchimisiz? 1-dars bepul → russonline.uz/?utm_source=telegram&utm_medium=channel».
 
 ## Съёмочный лист для Назокат (одна сессия ≈ 40 минут)
 Снимать вертикально, у окна (дневной свет на лицо), телефон на уровне глаз, тихая комната, однотонный фон. Каждый ролик — 2–3 дубля.
